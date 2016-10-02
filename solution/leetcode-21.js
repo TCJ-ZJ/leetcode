@@ -15,6 +15,8 @@ The new list should be made by splicing together the nodes of the first two list
  * @param {ListNode} l2
  * @return {ListNode}
  */
+
+/*Method1*/
 var mergeTwoLists = function(l1, l2) {
     var node = new ListNode(0),
     relNode =node;
@@ -40,4 +42,17 @@ var mergeTwoLists = function(l1, l2) {
         l2=l2.next;
     }
     return relNode.next;
+};
+
+/*Method2*/
+var mergeTwoLists = function(l1, l2) {
+    if(l1===null) return l2;
+    if(l2===null) return l1;
+    if(l1.val<l2.val){
+        l1.next = mergeTwoLists(l1.next,l2);
+        return l1;
+    }else{
+        l2.next=mergeTwoLists(l1,l2.next);
+        return l2;
+    }
 };
