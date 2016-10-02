@@ -9,7 +9,7 @@ Determine whether an integer is a palindrome. Do this without extra space.
  */
 var isPalindrome = function(x) {
     if(x<0) return false;
-    if(x===0) return true;
+    if(x<10) return true;
     if(x>2147483647) return false;
     var temp=x,
     k=0;
