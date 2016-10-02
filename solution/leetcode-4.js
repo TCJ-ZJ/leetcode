@@ -8,6 +8,8 @@ Find the median of the two sorted arrays.
  * @param {number[]} nums2
  * @return {number}
  */
+
+/*solution1*/
 var findMedianSortedArrays = function(nums1, nums2) {
    var len1=0,
    len2=0,
@@ -37,3 +39,35 @@ var findMedianSortedArrays = function(nums1, nums2) {
        return arr[~~(tot/2)];
    }
 };
+
+/*solution2*/
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function(nums1, nums2) {
+    var len1=nums1.length,
+    len2=nums2.length,
+    left=~~((len1+len2+1)/2);
+    right=~~((len1+len2+2)/2);
+    return (getKth(nums1,0,nums2,0,left)+getKth(nums1,0,nums2,0,right))/2;
+};
+
+function getKth(arrA,startA,arrB,startB,k){
+    var lenA=arrA.length,
+    lenB=arrB.length,
+    midA=Number.MAX_VALUE,
+    midB=Number.MAX_VALUE,
+    t=~~(k/2);
+    if(startA>lenA-1) return arrB[startB+k-1];
+    if(startB>lenB-1) return arrA[startA+k-1];
+    if(k===1) return Math.min(arrB[startB],arrA[startA]);
+    if(startA+t-1<lenA) midA=arrA[startA+t-1];
+    if(startB+t-1<lenB) midB=arrB[startB+t-1];
+    if(midA<midB){
+        return getKth(arrA,startA+t,arrB,startB,k-t);
+    }else{
+        return getKth(arrA,startA,arrB,startB+t,k-t);
+    }
+}
