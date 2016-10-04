@@ -1,5 +1,5 @@
 # leetcode
-```javascirpt
+```javascript
 function jjjj(){
 return jjjj;}
 ```
