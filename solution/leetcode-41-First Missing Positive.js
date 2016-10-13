@@ -12,19 +12,14 @@ and [3,4,-1,1] return 2.
  */
 var firstMissingPositive = function(nums) {
     var len = nums.length,
-    arr={},
+    arr=[],
     count=1;
     if(len===0) return 1;
     for(var i =0;i<len;i++){
-        if(nums[i]>0){
-           arr[nums[i]]=true;
-           count++;
-        }
+        if(nums[i]>0&&nums[i]<=len) arr[nums[i]]=true;
     }
-    var k = 1;
-    if(!arr[1]) return 1;
-    while(k<=count+1){
-        if(!arr[k]) return k;
-        else k++;
+    while(count<=arr.length+1){
+        if(!arr[count]) return count;
+        else count++;
     }
 };
