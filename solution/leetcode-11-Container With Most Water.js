@@ -8,18 +8,13 @@ Find two lines, which together with x-axis forms a container, such that the cont
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
-    var len=height.length,
-    l=0,
-    r=len-1,
-    result=0;
+var maxArea = function(height){
+    var l=0,
+    r = height.length-1,
+    mx = 0;
     while(l<r){
-        result=Math.max(result,Math.min(height[l],height[r])*(r-l));
-        if(height[l]<height[r]){
-            l++;
-        }else{
-            r--;
-        }
+        mx = Math.max(mx,Math.min(height[r],height[l])*(r-l));
+        height[l]<height[r]?l++:r--;
     }
-    return result;
+    return mx;
 };
