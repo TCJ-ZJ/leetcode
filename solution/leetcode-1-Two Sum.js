@@ -9,18 +9,11 @@ You may assume that each input would have exactly one solution.
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    var len = nums.length;
-    var obj={};
-    var arr=[];
-    for(var i=0;i<len;i++){
-        obj[nums[i]]=i;
-    }
-    for(var j = 0;j<len;j++){
-        var temp = target-nums[j];
-        if(obj[temp]){
-            arr.push(j);
-            arr.push(obj[temp])
-            return arr;
-        }
+    var obj={},
+    len = nums.length,
+    temp = 0;
+    for(var i=0;i<len;temp = obj[target-nums[++i]]){
+        if(temp) return [temp-1,i];
+        obj[nums[i]]=i+1;
     }
 };
