@@ -9,6 +9,7 @@ You may assume that the array is non-empty and the majority element always exist
  * @param {number[]} nums
  * @return {number}
  */
+//method1
 var majorityElement = function(nums) {
     var len = nums.length,
     obj={},
@@ -25,4 +26,22 @@ var majorityElement = function(nums) {
             return p-0;
         }
     }
+};
+
+
+//methods2
+var majorityElement = function(nums) {
+    var len = nums.length,
+    major = nums[0],
+    count =1;
+    for(var i =1;i<len;i++){
+        if(count===0){
+            count++;
+            major = nums[i];
+        }else if(major==nums[i]){
+            count++;
+        }else
+            count--;
+    }
+    return major;
 };
